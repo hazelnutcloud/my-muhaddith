@@ -11,6 +11,9 @@ const ScholarNameTicker: React.FC = () => {
           {scholarName.map((scholar, index) => (
             <p key={index}>{scholar.name}</p>
           ))}
+          {scholarName.map((scholar, index) => (
+            <p key={index}>{scholar.name}</p>
+          ))}
         </div>
       </div>
     </div>

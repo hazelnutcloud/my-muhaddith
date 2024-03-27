@@ -4,6 +4,8 @@ import "./globals.css";
 
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import Source from "@/components/Source";
+import Footer from "@/components/Footer";
 
 const baskervville = Libre_Baskerville({
   weight: ["400", "700"],
@@ -27,6 +29,8 @@ export default function RootLayout({
         <Navbar />
         <Hero />
         {children}
+        <Source />
+        <Footer />
       </body>
     </html>
   );

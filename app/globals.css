@@ -12,6 +12,16 @@
   );
 }
 
+.mask-gradient-hotd {
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0),
+    rgba(18, 27, 52, 1) 0%,
+    rgba(18, 27, 52, 1) 70%,
+    rgba(255, 255, 255, 0)
+  );
+}
+
 @keyframes marquee {
   from {
     transform: translateX(0%);
@@ -21,6 +31,18 @@
   }
 }
 
+
+
 .infinite-scroll {
   animation: 12s marquee infinite linear;
+
+  @media (min-width: 768px) {
+    /* Adjust animation duration for larger screens */
+    animation-duration: 20s;
+  }
+
+  @media (min-width: 1024px) {
+    /* Further adjust animation duration for even larger screens */
+    animation-duration: 30s;
+  }
 }

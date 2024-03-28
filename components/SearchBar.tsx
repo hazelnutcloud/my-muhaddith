@@ -3,7 +3,7 @@ import book from "@/public/icons/read-book-icon.svg";
 
 const SearchBar = () => {
   return (
-    <div className="relative flex justify-between p-1 px-5 text-sm rounded-full bg-primary-white">
+    <div className="relative flex justify-between p-1 px-5 text-sm rounded-full bg-primary-white lg:w-1/2 md:w-3/4">
       <input
         type="text"
         placeholder="Hukum tidak..."

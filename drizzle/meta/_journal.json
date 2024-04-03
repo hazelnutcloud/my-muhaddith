@@ -1,0 +1,13 @@
+{
+  "version": "5",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1712111674118,
+      "tag": "0000_wakeful_harrier",
+      "breakpoints": true
+    }
+  ]
+}

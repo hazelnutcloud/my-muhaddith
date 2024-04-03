@@ -1,9 +1,9 @@
-export type hadith = {
+export type Hadith = {
   hadith: string;
   scholar: string;
 }
 
-const hadithData: hadith[] = [
+export const hadithData: Hadith[] = [
   {
     hadith: `I heard the Messenger of Allah (ﷺ) say: "Actions are (judged) by motives (niyyah), so each man will have what he intended. Thus, he whose migration (hijrah) was to Allah and His Messenger, his migration is to Allah and His Messenger; but he whose migration was for some worldly thing he might gain, or for a wife he might marry, his migration is to that for which he migrated." `,
     scholar: "Bukhari & Muslim",
@@ -17,5 +17,3 @@ const hadithData: hadith[] = [
     scholar: "Bukhari & Muslim",
   },
 ];
-
-export default hadithData;

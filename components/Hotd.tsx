@@ -1,7 +1,7 @@
 // This is for hadith of the day
 
 import CardHotd from "./CardHotd";
-import hadithData, { hadith } from "@/data/hotd";
+import { Hadith, hadithData } from "@/data/hotd";
 
 const Hotd = () => {
   return (
@@ -9,8 +9,8 @@ const Hotd = () => {
       <div className="space-y-8 lg:max-w-[1200px] lg:w-full">
         <h2 className="text-xl">Hadith of the day</h2>
         <div className="flex w-full gap-6 pr-8 overflow-scroll mask-gradient-hotd snap-x scrollbar-hide">
-          {hadithData.map((hadith: hadith, i: number) => (
-            <CardHotd hadith={hadith} />
+          {hadithData.map((hadith: Hadith, i: number) => (
+            <CardHotd hadith={hadith} key={i} />
           ))}
         </div>
       </div>

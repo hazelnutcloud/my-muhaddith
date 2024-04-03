@@ -31,7 +31,7 @@ const Source = () => {
           </div>
           <div className="grid items-center gap-4 text-sm lg:grid-cols-9">
             {scholarName.map((scholar, i) => (
-              <p className="bg-[#FFC02C]/10 border border-[#FFC02C]/30 px-3 py-2 rounded-full text-center">
+              <p className="bg-[#FFC02C]/10 border border-[#FFC02C]/30 px-3 py-2 rounded-full text-center" key={i}>
                 {scholar.name}
               </p>
             ))}

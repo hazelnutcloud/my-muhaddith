@@ -5,6 +5,8 @@ import * as chromaSchema from "@/schema/chroma";
 import { fileURLToPath } from "node:url";
 import { chromium } from "playwright";
 import { ChromaClient } from "chromadb";
+import { getChromaClient, split } from "@/utils/chroma";
+import { and, eq } from "drizzle-orm";
 
 async function main() {
   const libsql = createClient({
@@ -13,9 +15,10 @@ async function main() {
   });
   const db = drizzle(libsql, { schema });
 
-  const chromaClient = new ChromaClient();
-  const hadithsCollection = chromaClient.getCollection({
+  const chromaClient = getChromaClient();
+  const hadithsCollection = await chromaClient.getCollection({
     name: chromaSchema.hadiths.name,
+    embeddingFunction: chromaSchema.hadiths.embeddingFunction,
   });
 
   const browser = await chromium.launch();
@@ -23,10 +26,12 @@ async function main() {
   const page = await context.newPage();
 
   // bukhari - 97 books
-  for (let i = 1; i <= 97; i++) {
+  const collection = "Sahih Al-Bukhari";
+  for (let i = 54; i <= 97; i++) {
     const url = `https://sunnah.com/bukhari/${i}`;
     await page.goto(url);
     console.log("scraping ", url);
+
     const hadiths = await page.evaluate(
       ([book, url]) => {
         const hadithContainer = document.querySelector(".AllHadith");
@@ -42,14 +47,14 @@ async function main() {
               ?.textContent?.split("Chapter: ")[1];
             if (englishChapter) {
               chapter = englishChapter;
-              // TODO: Create embeddings
             }
           } else if (child.classList.contains("actualHadithContainer")) {
             const hadith: typeof schema.hadiths.$inferInsert = {
-              collection: "Sahih Al-Bukhari",
+              collection,
               book: book,
               grade: "Sahih",
               reference: url,
+              metadata: { chapter },
               hadith: (hadiths.length + 1).toString(),
               english: child.querySelector<HTMLElement>(".english_hadith_full")
                 ?.innerText,
@@ -65,7 +70,41 @@ async function main() {
       },
       [i.toString(), url]
     );
-    await db.insert(schema.hadiths).values(hadiths);
+
+    await db
+      .insert(schema.hadiths)
+      .values(hadiths)
+      .onConflictDoNothing({
+        target: [
+          schema.hadiths.collection,
+          schema.hadiths.book,
+          schema.hadiths.hadith,
+        ],
+      });
+
+    const insertedHadiths = await db.query.hadiths.findMany({
+      where: and(
+        eq(schema.hadiths.collection, collection),
+        eq(schema.hadiths.book, i.toString())
+      ),
+    });
+
+    const ids: string[] = [];
+    const documents: string[] = [];
+
+    for (const hadith of insertedHadiths) {
+      const text = `${hadith.metadata?.chapter} - ${hadith.english}`;
+      const splitted = await split(text, 4000);
+      ids.push(...splitted.map((_, i) => `${hadith.id}:${i}`));
+      documents.push(...splitted);
+    }
+
+    const res = await hadithsCollection.add({
+      ids,
+      documents,
+    });
+
+    console.log("Inserted rows and embeddings", res);
   }
 
   await context.close();

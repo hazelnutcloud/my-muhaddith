@@ -1,0 +1,1 @@
+ALTER TABLE hadiths ADD `metadata` text;

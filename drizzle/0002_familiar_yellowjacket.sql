@@ -1,0 +1,1 @@
+CREATE UNIQUE INDEX `hadiths_collection_book_hadith_unique` ON `hadiths` (`collection`,`book`,`hadith`);

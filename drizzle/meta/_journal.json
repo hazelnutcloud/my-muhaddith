@@ -8,6 +8,20 @@
       "when": 1712125565777,
       "tag": "0000_mean_sunfire",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1712197168355,
+      "tag": "0001_pretty_skin",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1712204209625,
+      "tag": "0002_familiar_yellowjacket",
+      "breakpoints": true
     }
   ]
 }

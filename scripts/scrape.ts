@@ -4,7 +4,6 @@ import * as schema from "@/schema/drizzle";
 import * as chromaSchema from "@/schema/chroma";
 import { fileURLToPath } from "node:url";
 import { chromium } from "playwright";
-import { ChromaClient } from "chromadb";
 import { getChromaClient, split } from "@/utils/chroma";
 import { and, eq } from "drizzle-orm";
 
@@ -27,7 +26,7 @@ async function main() {
 
   // bukhari - 97 books
   const collection = "Sahih Al-Bukhari";
-  for (let i = 54; i <= 97; i++) {
+  for (let i = 1; i <= 97; i++) {
     const url = `https://sunnah.com/bukhari/${i}`;
     await page.goto(url);
     console.log("scraping ", url);

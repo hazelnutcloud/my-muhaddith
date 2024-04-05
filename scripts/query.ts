@@ -39,18 +39,16 @@ async function main() {
     where: inArray(schema.hadiths.id, ids),
   });
 
-  const display = ids
-    .map((id, i) => {
-      const hadith = hadiths.find((h) => h.id === id)!;
-      return {
-        relevanceScore: results.distances?.[0][i]!,
-        collection: hadith.collection,
-        book: hadith.book,
-        hadith: hadith.hadith,
-        reference: hadith.reference,
-      };
-    })
-    .sort((a, b) => b.relevanceScore - a.relevanceScore);
+  const display = ids.map((id, i) => {
+    const hadith = hadiths.find((h) => h.id === id)!;
+    return {
+      relevanceScore: results.distances?.[0][i]!,
+      collection: hadith.collection,
+      book: hadith.book,
+      hadith: hadith.hadith,
+      reference: hadith.reference,
+    };
+  });
 
   console.table(display);
 }

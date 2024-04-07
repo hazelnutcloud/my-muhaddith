@@ -115,7 +115,7 @@ const page = async ({ searchParams }: PageProps) => {
             >
               {/* Header */}
               <div className="flex flex-col justify-between py-4 border-b border-gray-400 lg:flex-row">
-                <p>{hadith.chapter}</p>
+                <p className="flex-1 ">{hadith.chapter}</p>
 
                 <p>
                   <span className="text-gray-500">Book</span> {hadith.book} |{" "}

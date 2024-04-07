@@ -27,7 +27,6 @@ export default function RootLayout({
     <html lang="en">
       <body className={baskervville.className}>
         <Navbar />
-        <Hero />
         {children}
         <Source />
         <Footer />

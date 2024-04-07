@@ -1,9 +1,11 @@
+import Hero from "@/components/Hero";
 import ScholarNameTicker from "@/components/ScholarNameTicker";
 import Hotd from "@/components/Hotd";
 
 export default function Home() {
   return (
     <div>
+      <Hero />
       <ScholarNameTicker />
       <Hotd />
 

@@ -1,8 +1,5 @@
 import Image from "next/image";
 
-// icons
-import books from "@/public/icons/read-book-icon.svg";
-
 // images
 import bg_hero from "@/public/bg-hero.jpg";
 import SearchBar from "./SearchBar";

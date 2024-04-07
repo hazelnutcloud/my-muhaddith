@@ -100,7 +100,7 @@ const page = async ({ searchParams }: PageProps) => {
     return redirect("/");
   }
 
-  const display: hadith[] = await GET_DATA(query);
+  const display = await GET_DATA(query);
   console.log("hasil:", display);
 
   return (
@@ -108,7 +108,7 @@ const page = async ({ searchParams }: PageProps) => {
       <Hero />
       <div className="flex justify-center py-16 bg-primary-blue text-primary-white">
         <div className="flex flex-col gap-10 w-[900px] px-4">
-          {display?.map((hadith: hadith, i: number) => (
+          {display?.map((hadith, i) => (
             <div
               key={i}
               className="flex flex-col p-6 space-y-8 border border-gray-700 rounded-lg"
@@ -127,10 +127,8 @@ const page = async ({ searchParams }: PageProps) => {
               {/* Hadith */}
               <div className="space-y-6 text-sm font-thin tracking-wide">
                 <p className="flex flex-col gap-2">
-                  {hadith.hadith_en.split(":").map((part, index) => (
-                    <span key={index}>
-                      {part}
-                    </span>
+                  {hadith.hadith_en?.split(":").map((part, index) => (
+                    <span key={index}>{part}</span>
                   ))}
                 </p>
                 <p className="leading-loose text-right text-primary-white/60">
@@ -141,7 +139,7 @@ const page = async ({ searchParams }: PageProps) => {
               {/* Scholar */}
               <div className="flex justify-between">
                 <Link
-                  href={hadith.reference}
+                  href={hadith.reference || ""}
                   target="_blank"
                   className="text-sm underline text-highlight/70 underline-offset-2"
                 >

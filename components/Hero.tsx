@@ -3,6 +3,7 @@ import Image from "next/image";
 // images
 import bg_hero from "@/public/bg-hero.jpg";
 import SearchBar from "./SearchBar";
+import { Suspense } from "react";
 
 const Hero = () => {
   return (
@@ -37,7 +38,9 @@ const Hero = () => {
               Wisdom
             </p>
           </div>
-          <SearchBar />
+          <Suspense>
+            <SearchBar />
+          </Suspense>
         </div>
       </div>
     </div>

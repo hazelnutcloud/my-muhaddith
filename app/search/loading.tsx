@@ -9,7 +9,7 @@ const loading = (props: Props) => {
   return (
     <div>
       <Hero />
-      <div className="flex justify-center py-16 bg-primary-blue text-primary-white">
+      <div className="flex justify-center py-16 bg-primary-blue text-primary-white h-[600px]">
         <div className="flex flex-col gap-10 w-[900px] px-4">
           {Array(3)?.map((_, i: number) => (
             <div

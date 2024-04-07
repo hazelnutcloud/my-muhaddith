@@ -33,7 +33,6 @@ interface hadith {
 
 const GET_DATA = async (query: string) => {
   "use server";
-  console.log("Searching for", query);
   try {
     // TURSO INITIALIZE
     const libsql = createClient({
@@ -69,8 +68,6 @@ const GET_DATA = async (query: string) => {
       where: inArray(schema.hadiths.id, ids),
     });
 
-    console.log(hadiths);
-
     const display = ids.map((id, i) => {
       const hadith = hadiths.find((h) => h.id === id)!;
       return {
@@ -101,8 +98,6 @@ const page = async ({ searchParams }: PageProps) => {
   }
 
   const display = await GET_DATA(query);
-  console.log("hasil:", display);
-
   return (
     <div className="">
       <Hero />

@@ -22,6 +22,19 @@
   );
 }
 
+@media screen and (min-width: 768px) {
+  /* Adjust percentage for desktop screens */
+  .mask-gradient-hotd {
+    -webkit-mask-image: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0),
+      rgba(18, 27, 52, 1) 0%,
+      rgba(18, 27, 52, 1) 90%,
+      rgba(255, 255, 255, 0)
+    );
+  }
+}
+
 /* For Webkit-based browsers (Chrome, Safari and Opera) */
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
@@ -29,8 +42,8 @@
 
 /* For IE, Edge and Firefox */
 .scrollbar-hide {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 @keyframes marquee {
@@ -41,8 +54,6 @@
     transform: translateX(-100%);
   }
 }
-
-
 
 .infinite-scroll {
   animation: 12s marquee infinite linear;

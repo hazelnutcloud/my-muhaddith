@@ -24,8 +24,9 @@ export default function Home() {
             />
           </svg>
           <div>
-            <p className="text-lg lg:text-3xl">1,304,200</p>
+            <p className="text-lg lg:text-3xl">7,277</p>
             <p className="text-sm">Total Hadith</p>
+            <p className="text-sm text-gray-600">More coming soon</p>
           </div>
         </div>
 
@@ -49,6 +50,7 @@ export default function Home() {
           <div>
             <p className="text-lg lg:text-3xl">9</p>
             <p className="text-sm">Scholar</p>
+            <p className="text-sm text-gray-600">More coming soon</p>
           </div>
         </div>
       </div>

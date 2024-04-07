@@ -30,12 +30,12 @@ const Hero = () => {
               <h1 className="text-xl lg:text-6xl md:text-4xl">
                 Discover the Wisdom of Ages{" "}
               </h1>
-              <h1 className="text-xl lg:text-6xl lg:leading-[75px] md:text-4xl md:leading-[50px]">
+              <h1 className="text-xl lg:text-3xl lg:leading-[75px] md:text-4xl md:leading-[50px]">
                 Your Gateway to Precise Hadith Search
               </h1>
             </div>
 
-            <p className="text-[12px] pt-2 lg:text-xl md:text-base">
+            <p className="text-[12px] pt-2 lg:text-lg md:text-base">
               Embark on a Journey Through Time: Uncover the Treasures of Hadith
               Wisdom
             </p>
